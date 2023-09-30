@@ -21,7 +21,6 @@ import {
   useToken,
 } from '@chakra-ui/react';
 import Logo from './components/logo';
-import Fonts from './components/fonts';
 import Decoration from './components/decorations';
 
 export default function Home() {
@@ -29,7 +28,7 @@ export default function Home() {
     <>
       <VideoBackground
         src={'/video/indigo-game-hero-video.mp4'}
-        wrapperProps={{ minH: '85vh' }}
+        wrapperProps={{ h: '85vh', minH: 'container.sm' }}
       >
         <HeroSection />
       </VideoBackground>
@@ -56,27 +55,36 @@ const HeroSection = () => {
       left={0}
       right={0}
       w='full'
-      bgGradient={'linear(to-r, blackAlpha.800 30%, blackAlpha.50)'}
+      bgGradient={[
+        'linear(to-b, blackAlpha.600, blackAlpha.600)',
+        'linear(to-tr, blackAlpha.800 30%, blackAlpha.50)',
+      ]}
     >
       <Container
         maxW={'container.xl'}
         centerContent
         h='full'
         w='full'
-        alignItems={'flex-start'}
+        alignItems={{ base: 'center', md: 'flex-start' }}
       >
         <Stack
           maxW={'container.md'}
           w='full'
-          align={'flex-start'}
+          align={{ base: 'center', md: 'flex-start' }}
           justify={'center'}
           gap={8}
           flex={1}
         >
-          <Heading fontSize='8xl' lineHeight={0.9}>
+          <Heading
+            fontSize={{ base: '6xl', md: '8xl' }}
+            lineHeight={0.9}
+            textAlign={{ base: 'center', md: 'start' }}
+          >
             {content.title}
           </Heading>
-          <Text fontSize={'xl'}>{content.subtitle}</Text>
+          <Text fontSize={'xl'} textAlign={{ base: 'center', md: 'start' }}>
+            {content.subtitle}
+          </Text>
           <Button colorScheme={'red'} size='lg' textTransform={'uppercase'}>
             Submit your game
           </Button>
@@ -148,11 +156,20 @@ const ProgramSection = () => {
         boxSize={'6xl'}
         transform={'scaleX(-1) rotate(160deg)'}
       />
-      <Container maxW={'container.xl'} py={48}>
-        <Stack direction={['column', 'row']} gap={20}>
-          <Box maxW='container.sm' py={12}>
-            <TitleArea title={content.title} subtitle={content.subtitle} />
-            <Box h={48} />
+      <Container maxW={'container.xl'} py={{ base: 8, md: 40 }}>
+        <Stack
+          direction={{ base: 'column', md: 'row' }}
+          gap={{ base: 8, md: 20 }}
+        >
+          <Stack
+            maxW='container.sm'
+            direction={{ base: 'column-reverse', md: 'column' }}
+            py={{ base: 0, md: 12 }}
+          >
+            <Box>
+              <TitleArea title={content.title} subtitle={content.subtitle} />
+            </Box>
+            <Box h={{ base: 12, md: 48 }} />
             <Box
               p={4}
               m={-4}
@@ -173,8 +190,12 @@ const ProgramSection = () => {
                 ))}
               </Stack>
             </Box>
-          </Box>
-          <SimpleGrid columns={2} gap={24} pt={[0, 32]}>
+          </Stack>
+          <SimpleGrid
+            columns={2}
+            gap={{ base: 8, md: 24 }}
+            pt={{ base: 0, md: 32 }}
+          >
             {content.benefits.map((benefit) => {
               return (
                 <Stack key={benefit.id}>
@@ -183,7 +204,9 @@ const ProgramSection = () => {
                   </Box>
                   <Box as='span'>
                     <Text as='strong'>{benefit.name}</Text>
-                    <Text>{benefit.description}</Text>
+                    <Text fontSize={{ base: 'md', md: 'lg' }}>
+                      {benefit.description}
+                    </Text>
                   </Box>
                 </Stack>
               );
@@ -205,7 +228,9 @@ const EngagementSection = () => {
       {
         id: 1,
         name: 'Nuon Digital Indonesia',
-        logo: () => <Logo.Nuon boxSize={48} fill='white' />,
+        logo: () => (
+          <Logo.Nuon width={{ base: 32, md: 48 }} h='auto' fill='white' />
+        ),
       },
       {
         id: 2,
@@ -213,7 +238,8 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-btp-white.png'}
-            boxSize={56}
+            width={{ base: 40, md: 56 }}
+            h='auto'
             objectFit={'contain'}
             alt={'Bandung Techno Park'}
           />
@@ -225,7 +251,8 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-tic.webp'}
-            boxSize={56}
+            width={{ base: 40, md: 56 }}
+            h='auto'
             objectFit={'contain'}
             alt={'The Iterative Collective'}
           />
@@ -237,7 +264,8 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-gamelan-game-jogja.png'}
-            boxSize={56}
+            width={{ base: 40, md: 56 }}
+            h='auto'
             objectFit={'contain'}
             alt={'GameLan Jogja'}
           />
@@ -251,7 +279,8 @@ const EngagementSection = () => {
             src={
               'https://academy.agate.id/wp-content/uploads/2023/05/logo-agate-academy-white-1.png'
             }
-            boxSize={56}
+            width={{ base: 40, md: 56 }}
+            h='auto'
             objectFit={'contain'}
             alt={'Agate Academy'}
           />
@@ -261,7 +290,7 @@ const EngagementSection = () => {
   };
 
   return (
-    <Box py={32} pos='relative' bg='red.900'>
+    <Box py={[24, 32]} pos='relative' bg='red.900'>
       <Decoration.ArrowHero
         pos='absolute'
         boxSize={'7xl'}
@@ -279,17 +308,12 @@ const EngagementSection = () => {
           />
         </Box>
         <Box h={8} />
-        <Stack
-          direction={['column', 'row']}
-          gap={12}
-          align='center'
-          justify={'flex-end'}
-        >
+        <Wrap justify={'center'} align='center' gap={40}>
           {content.partners.map((partner) => {
             const logo = partner.logo();
-            return <Box key={partner.id}>{logo}</Box>;
+            return <WrapItem key={partner.id}>{logo}</WrapItem>;
           })}
-        </Stack>
+        </Wrap>
       </Container>
     </Box>
   );
@@ -356,24 +380,35 @@ const MentorSection = () => {
   };
 
   return (
-    <Box py={48}>
+    <Box py={{ base: 16, md: 48 }}>
       <Container maxW={['container.xl']}>
         <Stack>
-          <Stack direction={['row']} align='center' gap={8}>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            align={'center'}
+            gap={8}
+          >
             <Image src={'/icons/mentors.png'} alt='Mentor icon' boxSize={24} />
-
-            <Box>
+            <Box textAlign={{ base: 'center', md: 'start' }}>
               <TitleArea title={content.title} subtitle={content.subtitle} />
             </Box>
           </Stack>
           <Box h={8} />
-          <Stack direction={['row']} justify={'space-evenly'} gap={12}>
-            <Stack direction={['column']} flex={1} gap={8}>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            justify={'space-evenly'}
+            gap={12}
+          >
+            <Stack direction={['column']} flex={1} gap={{ base: 4, md: 8 }}>
               <Heading size='md'>Resident Mentors</Heading>
               <Divider />
               {content.mentors.residents.map((mentor) => (
                 <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
-                  <Avatar src={''} name={mentor.name} size='2xl' />
+                  <Avatar
+                    src={''}
+                    name={mentor.name}
+                    size={{ base: 'xl', sm: '2xl' }}
+                  />
                   <Box>
                     <Text fontWeight={'bold'}>{mentor.name}</Text>
                     <Text fontSize={'sm'}>{mentor.role}</Text>
@@ -381,12 +416,16 @@ const MentorSection = () => {
                 </Stack>
               ))}
             </Stack>
-            <Stack direction={['column']} flex={1} gap={8}>
+            <Stack direction={['column']} flex={1} gap={{ base: 4, md: 8 }}>
               <Heading size='md'>Technical Mentors</Heading>
               <Divider />
               {content.mentors.technicals.map((mentor) => (
                 <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
-                  <Avatar src={''} name={mentor.name} size='2xl' />
+                  <Avatar
+                    src={''}
+                    name={mentor.name}
+                    size={{ base: 'xl', sm: '2xl' }}
+                  />
                   <Box>
                     <Text fontWeight={'bold'}>{mentor.name}</Text>
                     <Text fontSize={'sm'}>{mentor.role}</Text>
@@ -413,7 +452,7 @@ const JoinSection = () => {
 
   return (
     <Box
-      py={32}
+      py={{ base: '48', md: 32 }}
       sx={{
         background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 60%, black), url('/2023-alpha-hero-bg.png') center / cover`,
       }}
