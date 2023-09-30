@@ -1,0 +1,340 @@
+import styles from './page.module.css';
+import NavigationBar from './components/nav';
+import {
+  Avatar,
+  Box,
+  Button,
+  Center,
+  Container,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
+import heroImage from './public/2023-alpha-hero-bg.png';
+
+export default function Home() {
+  return (
+    <>
+      <NavigationBar />
+      <HeroSection />
+      <ProgramSection />
+      <MentorSection />
+      <PortfolioSection />
+      <PartnerSection />
+    </>
+  );
+}
+
+const HeroSection = () => {
+  const content = {
+    headline: 'We are Game Studio Incubator',
+    subHeadline:
+      'Bring your game to reality and grow together with our comprehensive end-to-end program',
+  };
+
+  return (
+    <Flex
+      justify={'center'}
+      align={'center'}
+      h={'80vh'}
+      sx={{
+        background: ` linear-gradient(to bottom, transparent 60%, black ), url(${heroImage.src}) center / cover`,
+      }}
+    >
+      <Container as={Stack} maxW={'container.sm'} align='center'>
+        <Heading>{content.headline}</Heading>
+        <Text textAlign={'center'}>{content.subHeadline}</Text>
+        <Box h={4} />
+        <Button>Enroll your game</Button>
+      </Container>
+    </Flex>
+  );
+};
+
+const ProgramSection = () => {
+  const content = {
+    title: 'Our Program',
+    programs: [
+      {
+        id: 1,
+        title: 'Publisher Matchmaking',
+        description:
+          'Matchmaking session between your game and our publisher network',
+        imageUrl: 'https://bit.ly/dan-abramov',
+      },
+      {
+        id: 2,
+        title: 'Networking Event',
+        description:
+          'Support to promote your game in regional and global game events',
+        imageUrl: 'https://bit.ly/dan-abramov',
+      },
+      {
+        id: 3,
+        title: 'Validation Support',
+        description:
+          'Make your game better through validation program and events',
+        imageUrl: 'https://bit.ly/dan-abramov',
+      },
+      {
+        id: 4,
+        title: 'Mentoring Activities',
+        description: 'Game nurturing session with reputable game experts',
+        imageUrl: 'https://bit.ly/dan-abramov',
+      },
+    ],
+  };
+
+  return (
+    <Stack bgGradient={'linear(to-b, black 75%, red.900)'}>
+      <Container maxW={['container.xl']} py={48}>
+        <Stack>
+          <Heading size='lg'>{content.title}</Heading>
+          <Box h={24} />
+          <Stack
+            direction={['column', 'row']}
+            justify={'space-between'}
+            gap={24}
+          >
+            {content.programs.map((program) => (
+              <Stack key={program.id} flex={1} gap={2}>
+                <Image src={program.imageUrl} alt={program.title} />
+                <Box h={4} />
+                <Heading size='md'>{program.title}</Heading>
+                <Text fontSize={'sm'}>{program.description}</Text>
+              </Stack>
+            ))}
+          </Stack>
+        </Stack>
+      </Container>
+    </Stack>
+  );
+};
+
+const PartnerSection = () => {
+  const content = {
+    title: 'Collaborating Partners',
+    partners: [
+      {
+        id: 1,
+        name: 'Agate Academy',
+        logoUrl:
+          'https://academy.agate.id/wp-content/uploads/2021/04/logo-agate-academy-350-100.png',
+      },
+      {
+        id: 2,
+        name: 'The Iterative Collective',
+        logoUrl:
+          'https://blog.theiterative.co/wp-content/uploads/2022/09/tic-horizontal512-1.png',
+      },
+      {
+        id: 3,
+        name: 'Bandung Techno Park',
+        logoUrl: 'https://btp.or.id/wp-content/uploads/2022/07/logo_trans.png',
+      },
+      {
+        id: 4,
+        name: 'Binus Game Application & Technology',
+        logoUrl:
+          'https://binus.ac.id/wp-content/uploads/2022/08/logo-binus.svg',
+      },
+      {
+        id: 5,
+        name: 'GameLan',
+        logoUrl:
+          'https://scontent.fbdo9-1.fna.fbcdn.net/v/t39.30808-6/305802529_450141327151096_1366716061802921071_n.png?_nc_cat=102&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=QKh2VMIDOtgAX9n-0DT&_nc_ht=scontent.fbdo9-1.fna&oh=00_AfDJdc9XACQ1b8d30lEluGuskfjj74Qqqb_Ubo0_qqKVhg&oe=6514517E',
+      },
+    ],
+  };
+
+  return (
+    <Stack bg='gray.100'>
+      <Container maxW={['container.xl']} py={32}>
+        <Stack>
+          <Heading textAlign={'center'} size='lg' color='red.600'>
+            {content.title}
+          </Heading>
+          <Box h={12} />
+          <Wrap justify={'center'} spacing={10}>
+            {content.partners.map((partner) => (
+              <WrapItem key={partner.id}>
+                <Image h={20} src={partner.logoUrl} alt={partner.name} />
+              </WrapItem>
+            ))}
+          </Wrap>
+        </Stack>
+      </Container>
+    </Stack>
+  );
+};
+
+const MentorSection = () => {
+  const content = {
+    title: 'Meet the mentors',
+    mentors: {
+      residents: [
+        {
+          id: 1,
+          name: 'Rachmad Imron',
+          role: 'CEO Digital Happiness',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+        {
+          id: 2,
+          name: 'Riris Marpaung',
+          role: 'CEO GameChanger Studio',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+        {
+          id: 3,
+          name: 'Dominikus Damas Putranto',
+          role: 'Co-founder & Director of People and Culture Rolling Glory',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+      ],
+      technicals: [
+        {
+          id: 4,
+          name: 'Wimindra Lee',
+          role: 'Creative Director Agate',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+        {
+          id: 5,
+          name: 'Rizky Wasisto Edi',
+          role: 'Senior 2d Artist',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+        {
+          id: 6,
+          name: 'Yoseph Budianto',
+          role: 'ex-CTO Aftermyth Studio',
+          linkedInUrl: '',
+          companyUrl: '',
+          imageUrl: '',
+        },
+      ],
+    },
+  };
+
+  return (
+    <Stack bg='red.600'>
+      <Container maxW={['container.xl']} py={48}>
+        <Stack>
+          <Heading size='lg'>{content.title}</Heading>
+          <Box h={8} />
+          <Stack direction={['row']} justify={'space-evenly'} gap={12}>
+            <Stack direction={['column']} flex={1} gap={8}>
+              <Heading size='md'>Resident Mentors</Heading>
+              <Divider />
+              {content.mentors.residents.map((mentor) => (
+                <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
+                  <Avatar src={''} name={mentor.name} size='2xl' />
+                  <Box>
+                    <Text fontWeight={'bold'}>{mentor.name}</Text>
+                    <Text fontSize={'sm'}>{mentor.role}</Text>
+                  </Box>
+                </Stack>
+              ))}
+            </Stack>
+            <Stack direction={['column']} flex={1} gap={8}>
+              <Heading size='md'>Technical Mentors</Heading>
+              <Divider />
+              {content.mentors.technicals.map((mentor) => (
+                <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
+                  <Avatar src={''} name={mentor.name} size='2xl' />
+                  <Box>
+                    <Text fontWeight={'bold'}>{mentor.name}</Text>
+                    <Text fontSize={'sm'}>{mentor.role}</Text>
+                  </Box>
+                </Stack>
+              ))}
+            </Stack>
+          </Stack>
+        </Stack>
+      </Container>
+    </Stack>
+  );
+};
+
+const PortfolioSection = () => {
+  const content = {
+    title: 'Be the Next-Gen Game Studio',
+    caption: 'Join us now to bring your game studio into reality',
+    games: [
+      {
+        id: 1,
+        name: 'Biwar: Legend of Dragon Slayer',
+        studio: 'Devata Game',
+        posterUrl:
+          'https://cdn.akamai.steamstatic.com/steam/apps/1680800/ss_ec147fcd5c2a55eed7701c47d84ed56ebe961a70.1920x1080.jpg?t=1675324547',
+        studioImgUrl:
+          'https://devatagame.com/wp-content/uploads/2021/01/Mini-logo.png',
+      },
+      {
+        id: 2,
+        name: 'Faerie Afterlight',
+        studio: 'Clay Games',
+        posterUrl:
+          'https://cdn.cloudflare.steamstatic.com/steam/apps/1415280/header.jpg?t=1694797481',
+        studioImgUrl: 'https://www.claygamestudio.com/images/logo.png',
+      },
+      {
+        id: 3,
+        name: 'Paw Rumble',
+        studio: 'Clay Games',
+        posterUrl:
+          'https://grinsmile.net/wp-content/uploads/2021/01/Screenshot-401-980x553.png',
+        studioImgUrl:
+          'https://grinsmile.net/wp-content/uploads/2020/10/GrinSmile_Logo_2.png',
+      },
+      {
+        id: 4,
+        name: 'Kejora',
+        studio: 'Berangin Creative',
+        posterUrl:
+          'https://cdn.cloudflare.steamstatic.com/steam/apps/1410400/header.jpg?t=1693197340',
+        studioImgUrl: '',
+      },
+      {
+        id: 5,
+        name: 'As I Began to Dream',
+        studio: 'Strayflux Studio',
+        posterUrl:
+          'https://cdn.cloudflare.steamstatic.com/steam/apps/2482180/header.jpg?t=1691063424',
+        studioImgUrl: '',
+      },
+    ],
+  };
+
+  return (
+    <Stack bgGradient={'linear(to-t, black 75%, red.900)'}>
+      <Container maxW={['container.xl']} py={48}>
+        <Stack>
+          <Heading textAlign={'center'} size='lg'>
+            {content.title}
+          </Heading>
+          <Text textAlign={'center'}>{content.caption}</Text>
+          <Box h={8} />
+        </Stack>
+      </Container>
+    </Stack>
+  );
+};
+
+const ArticleSection = () => {};
