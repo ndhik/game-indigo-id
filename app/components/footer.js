@@ -34,10 +34,9 @@ const Footer = () => {
       label: 'Indigo Game',
       url: '#',
       links: [
-        { url: '#', name: 'About' },
-        { url: '#', name: 'Portfolio' },
-        { url: '#', name: 'Partners' },
-        { url: '#', name: 'Articles' },
+        { url: '/about', name: 'About' },
+        { url: 'startups', name: 'Our startups' },
+        { url: '/contact', name: 'Contact' },
       ],
     },
     indigo: {
@@ -197,11 +196,18 @@ Footer.Sm = ({ content }) => {
             textTransform={'uppercase'}
             fontWeight={'semibold'}
             fontSize={'md'}
+            isExternal
           >
             {content.indigo.label}
           </Link>
           {content.indigo.links.map((link, i) => (
-            <Link as={NextLink} key={i} href={link.url} fontSize={'md'}>
+            <Link
+              as={NextLink}
+              key={i}
+              href={link.url}
+              fontSize={'md'}
+              isExternal
+            >
               {link.name}
             </Link>
           ))}
@@ -248,17 +254,23 @@ Footer.Md = ({ content }) => {
             textTransform={'uppercase'}
             fontWeight={'semibold'}
             fontSize={'md'}
+            isExternal
           >
             {content.indigo.label}
           </Link>
           {content.indigo.links.map((link, i) => (
-            <Link as={NextLink} key={i} href={link.url} fontSize={'md'}>
+            <Link
+              as={NextLink}
+              key={i}
+              href={link.url}
+              fontSize={'md'}
+              isExternal
+            >
               {link.name}
             </Link>
           ))}
         </Stack>
       </GridItem>
-
       <GridItem colSpan={1} />
       <GridItem colSpan={2}>
         <Stack>
