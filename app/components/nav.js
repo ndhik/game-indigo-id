@@ -34,9 +34,8 @@ const NavigationBar = () => {
 
   const links = [
     { id: 1, href: '/about', label: 'About' },
-    { id: 2, href: '#', label: 'Portfolio' },
-    { id: 3, href: '#', label: 'Contact' },
-    { id: 4, href: '#', label: 'Articles' },
+    { id: 2, href: '/startups', label: 'Our startups' },
+    { id: 3, href: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -53,14 +52,14 @@ const NavigationBar = () => {
             align='center'
           >
             <Stack direction={['row']}>
-              <Box>
+              <Link as={NextLink} href='/'>
                 <Image
                   src={'/logo/logo-indigo-game-white.png'}
                   width={40}
                   alt='Indigo Game Logo'
                   height='auto'
                 />
-              </Box>
+              </Link>
             </Stack>
             <Box flex={1} />
             {isDesktop ? (
