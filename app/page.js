@@ -172,7 +172,7 @@ const ProgramSection = () => {
             <Box h={{ base: 12, md: 48 }} />
             <Box
               p={4}
-              m={-4}
+              m={{ base: 1, md: 0, xl: -4 }}
               bg='red.900'
               borderRadius={'2xl'}
               boxShadow={'2xl'}
