@@ -57,9 +57,9 @@ export default function Contact() {
   };
 
   return (
-    <Box py={24} bg='gray.500'>
+    <Box py={24} bg='gray.600'>
       <Container maxW={'container.xl'}>
-        <Stack direction={{ base: 'column', md: 'row' }} gap={40}>
+        <Stack direction={{ base: 'column', md: 'row' }} gap={24}>
           <Box flex={1}>
             <Heading color='yellow.500'>Let&apos;s engage!</Heading>
             <Box h={8} />
@@ -79,7 +79,7 @@ export default function Contact() {
               instead.
             </Text>
           </Box>
-          <Box flex={1}>
+          <Box flex={2}>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
@@ -144,6 +144,7 @@ export default function Contact() {
               )}
             </Formik>
           </Box>
+          <Box flex={{ base: 0, md: 1 }} />
         </Stack>
       </Container>
     </Box>
