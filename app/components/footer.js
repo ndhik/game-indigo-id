@@ -44,9 +44,9 @@ const Footer = () => {
       label: 'Indigo',
       url: 'https://indigo.id',
       links: [
-        { url: '#', name: 'Pre-startup' },
-        { url: '#', name: 'Incubation' },
-        { url: '#', name: 'Acceleration' },
+        { url: 'https://indigo.id/pre-startup', name: 'Pre-startup' },
+        { url: 'https://indigo.id/incubations', name: 'Incubation' },
+        { url: 'https://indigo.id/accelerations', name: 'Acceleration' },
       ],
     },
   };
@@ -122,15 +122,22 @@ Footer.Base = ({ content }) => {
         <Stack>
           <Link
             as={NextLink}
-            href='#'
+            href={content.indigo.url}
             textTransform={'uppercase'}
             fontWeight={'semibold'}
             fontSize={'md'}
+            isExternal
           >
             {content.indigo.label}
           </Link>
           {content.indigo.links.map((link, i) => (
-            <Link as={NextLink} key={i} href={link.url} fontSize={'md'}>
+            <Link
+              as={NextLink}
+              key={i}
+              href={link.url}
+              fontSize={'md'}
+              isExternal
+            >
               {link.name}
             </Link>
           ))}
