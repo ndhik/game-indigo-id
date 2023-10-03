@@ -18,6 +18,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { TbMenu2, TbX } from 'react-icons/tb';
 
@@ -30,6 +31,8 @@ const NavigationBar = () => {
     { ssr: true }
   );
 
+  const router = useRouter();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const links = [
@@ -37,6 +40,10 @@ const NavigationBar = () => {
     { id: 2, href: '/startups', label: 'Our startups' },
     { id: 3, href: '/contact', label: 'Contact' },
   ];
+
+  const onCtaClick = () => {
+    router.push('https://bit.ly/teams_registration_indigo');
+  };
 
   return (
     <>
@@ -69,7 +76,12 @@ const NavigationBar = () => {
                     {link.label}
                   </Link>
                 ))}
-                <Button colorScheme='yellow' boxShadow={'lg'} size='sm'>
+                <Button
+                  colorScheme='yellow'
+                  boxShadow={'lg'}
+                  size='sm'
+                  onClick={onCtaClick}
+                >
                   Submit your game
                 </Button>
               </Stack>
@@ -110,7 +122,12 @@ const NavigationBar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Button colorScheme='yellow' boxShadow={'lg'} size='md'>
+              <Button
+                colorScheme='yellow'
+                boxShadow={'lg'}
+                size='md'
+                onClick={onCtaClick}
+              >
                 Submit your game
               </Button>
             </Stack>

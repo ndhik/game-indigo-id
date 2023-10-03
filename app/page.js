@@ -1,6 +1,4 @@
 'use client';
-import styles from './page.module.css';
-import NavigationBar from './components/nav';
 import {
   Avatar,
   Box,
@@ -13,6 +11,7 @@ import {
   GridItem,
   Heading,
   Image,
+  LightMode,
   SimpleGrid,
   Stack,
   Text,
@@ -22,6 +21,7 @@ import {
 } from '@chakra-ui/react';
 import Logo from './components/logo';
 import Decoration from './components/decorations';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   return (
@@ -41,10 +41,15 @@ export default function Home() {
 }
 
 const HeroSection = () => {
+  const router = useRouter();
   const content = {
     title: 'Making Indonesia a Game Producer Nation',
     subtitle:
       'Indigo Game is an incubator to level up early-stage game studio to be ready for publishing deal. Join us and bring your game into reality.',
+  };
+
+  const onCtaClick = () => {
+    router.push('https://bit.ly/teams_registration_indigo');
   };
 
   return (
@@ -85,9 +90,16 @@ const HeroSection = () => {
           <Text fontSize={'xl'} textAlign={{ base: 'center', md: 'start' }}>
             {content.subtitle}
           </Text>
-          <Button colorScheme={'red'} size='lg' textTransform={'uppercase'}>
-            Submit your game
-          </Button>
+          <LightMode>
+            <Button
+              colorScheme={'red'}
+              size='lg'
+              textTransform={'uppercase'}
+              onClick={onCtaClick}
+            >
+              Submit your game
+            </Button>
+          </LightMode>
         </Stack>
       </Container>
     </Box>
@@ -442,12 +454,17 @@ const MentorSection = () => {
 
 const JoinSection = () => {
   const [from, to] = useToken('colors', ['red.400', 'red.900']);
+  const router = useRouter();
 
   const content = {
     subtitle: 'Is your game studio',
     title: 'Eager to get publisher?',
     caption:
       'We are looking for high spirited game studio with playable vertical slice and validated business plan to be nurtured into publisher-stage. Submit your game now.',
+  };
+
+  const onCtaClick = () => {
+    router.push('https://bit.ly/teams_registration_indigo');
   };
 
   return (
@@ -467,9 +484,16 @@ const JoinSection = () => {
           />
         </Box>
         <Box h={16} />
-        <Button colorScheme='red' size={'lg'} textTransform={'uppercase'}>
-          Submit your game
-        </Button>
+        <LightMode>
+          <Button
+            colorScheme='red'
+            size={'lg'}
+            textTransform={'uppercase'}
+            onClick={onCtaClick}
+          >
+            Submit your game
+          </Button>
+        </LightMode>
       </Container>
     </Box>
   );

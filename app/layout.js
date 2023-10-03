@@ -2,6 +2,7 @@ import './globals.css';
 import { Providers } from './providers';
 import NavigationBar from './components/nav';
 import Footer from './components/footer';
+import { DarkMode } from '@chakra-ui/react';
 
 export const metadata = {
   title: 'Indigo Game',

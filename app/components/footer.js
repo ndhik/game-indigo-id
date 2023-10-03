@@ -35,7 +35,7 @@ const Footer = () => {
       url: '#',
       links: [
         { url: '/about', name: 'About' },
-        { url: 'startups', name: 'Our startups' },
+        { url: '/startups', name: 'Our startups' },
         { url: '/contact', name: 'Contact' },
       ],
     },
