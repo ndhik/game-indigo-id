@@ -32,9 +32,9 @@ export default function Contact() {
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(),
-    message: Yup.string().required(),
-    email: Yup.string().email().required(),
+    name: Yup.string().required('Your name is required'),
+    message: Yup.string().required('Please enter your message'),
+    email: Yup.string().email().required('Your email is required'),
   });
 
   const onSubmit = async (values, actions) => {
@@ -57,7 +57,7 @@ export default function Contact() {
   };
 
   return (
-    <Box py={24} bg='gray.600'>
+    <Box py={24} bg='gray.600' textColor={'white'}>
       <Container maxW={'container.xl'}>
         <Stack direction={{ base: 'column', md: 'row' }} gap={24}>
           <Box flex={1}>
@@ -111,7 +111,7 @@ export default function Contact() {
                           <FormLabel>Email address</FormLabel>
                           <Input {...field} />
                           <FormErrorMessage>
-                            {form.errors.name}
+                            {form.errors.email}
                           </FormErrorMessage>
                         </FormControl>
                       )}
