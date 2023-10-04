@@ -5,6 +5,7 @@ import {
   Button,
   Center,
   Container,
+  DarkMode,
   Divider,
   Flex,
   Grid,
@@ -64,6 +65,7 @@ const HeroSection = () => {
         'linear(to-b, blackAlpha.600, blackAlpha.600)',
         'linear(to-tr, blackAlpha.800 30%, blackAlpha.50)',
       ]}
+      textColor={'white'}
     >
       <Container
         maxW={'container.xl'}
@@ -168,7 +170,11 @@ const ProgramSection = () => {
         boxSize={'6xl'}
         transform={'scaleX(-1) rotate(160deg)'}
       />
-      <Container maxW={'container.xl'} py={{ base: 8, md: 40 }}>
+      <Container
+        maxW={'container.xl'}
+        py={{ base: 8, md: 40 }}
+        textColor={'white'}
+      >
         <Stack
           direction={{ base: 'column', md: 'row' }}
           gap={{ base: 8, md: 20 }}
@@ -302,7 +308,7 @@ const EngagementSection = () => {
   };
 
   return (
-    <Box py={[24, 32]} pos='relative' bg='red.900'>
+    <Box py={[24, 32]} pos='relative' bg='red.900' textColor={'white'}>
       <Decoration.ArrowHero
         pos='absolute'
         boxSize={'7xl'}
@@ -392,7 +398,7 @@ const MentorSection = () => {
   };
 
   return (
-    <Box py={{ base: 16, md: 48 }}>
+    <Box py={{ base: 16, md: 48 }} bg='gray.700' color='white'>
       <Container maxW={['container.xl']}>
         <Stack>
           <Stack
@@ -413,7 +419,7 @@ const MentorSection = () => {
           >
             <Stack direction={['column']} flex={1} gap={{ base: 4, md: 8 }}>
               <Heading size='md'>Resident Mentors</Heading>
-              <Divider />
+              <Divider borderColor={'white'} />
               {content.mentors.residents.map((mentor) => (
                 <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
                   <Avatar
@@ -430,7 +436,7 @@ const MentorSection = () => {
             </Stack>
             <Stack direction={['column']} flex={1} gap={{ base: 4, md: 8 }}>
               <Heading size='md'>Technical Mentors</Heading>
-              <Divider />
+              <Divider borderColor={'white'} />
               {content.mentors.technicals.map((mentor) => (
                 <Stack key={mentor.id} direction={'row'} align='center' gap={8}>
                   <Avatar
@@ -469,6 +475,7 @@ const JoinSection = () => {
 
   return (
     <Box
+      color='white'
       py={{ base: '48', md: 32 }}
       sx={{
         background: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 60%, black), url('/2023-alpha-hero-bg.png') center / cover`,

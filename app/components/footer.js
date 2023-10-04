@@ -57,7 +57,7 @@ const Footer = () => {
   });
 
   return (
-    <Box py={8}>
+    <Box py={8} bg='black' color='white'>
       <Container maxW={'container.xl'}>
         <Stack gap={8}>
           <Image src={content.company.logo} alt='Indigo Game Logo' w={48} />

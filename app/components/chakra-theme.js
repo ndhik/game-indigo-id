@@ -5,7 +5,8 @@ const theme = extendTheme({
     heading: `'Pixelify Sans', sans-serif`,
     body: `'Ligo', sans-serif`,
   },
-  config: { initialColorMode: 'dark', useSystemColorMode: false },
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
   colors: {
     red: {
       50: '#F8C1C7',

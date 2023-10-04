@@ -48,6 +48,7 @@ const NavigationBar = () => {
   return (
     <>
       <Box
+        color='white'
         bgGradient={'linear(to-br, red.500, red.600 , red.600 ,  red.800)'}
         px={[4, 8]}
       >
