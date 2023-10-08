@@ -57,7 +57,7 @@ export default function Contact() {
   };
 
   return (
-    <Box py={24} bg='gray.600' textColor={'white'}>
+    <Box py={24} bg='gray.900' textColor={'white'}>
       <Container maxW={'container.xl'}>
         <Stack direction={{ base: 'column', md: 'row' }} gap={24}>
           <Box flex={1}>

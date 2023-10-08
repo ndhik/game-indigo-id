@@ -398,7 +398,7 @@ const MentorSection = () => {
   };
 
   return (
-    <Box py={{ base: 16, md: 48 }} bg='gray.700' color='white'>
+    <Box py={{ base: 16, md: 48 }} bg='gray.900' color='white'>
       <Container maxW={['container.xl']}>
         <Stack>
           <Stack
