@@ -103,8 +103,8 @@ const NavigationBar = () => {
       <Drawer isOpen={isOpen} placement='top' onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg='black' borderBottomRadius={'xl'} overflow={'hidden'}>
-          <DrawerCloseButton />
-          <DrawerBody>
+          <DrawerCloseButton color='white' />
+          <DrawerBody color='white'>
             <Stack>
               <Image
                 src='/logo/logo-indigo-game-red.png'

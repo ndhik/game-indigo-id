@@ -23,12 +23,15 @@ import {
   Tabs,
   Tag,
   Text,
+  Wrap,
+  WrapItem,
   useToken,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import NextLink from 'next/link';
 import startups from '../mock/startups';
 import { FaSteam, FaItchIo, FaGooglePlay } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
 
 export default function Startups() {
   const [filter, setFilter] = useState('all');
@@ -48,6 +51,8 @@ export default function Startups() {
 }
 
 const HeaderSection = () => {
+  const router = useRouter();
+
   return (
     <Box bgGradient={'linear(to-br, red.600, red.900)'}>
       <Container maxW={'container.xl'} py={24} color='white'>
@@ -58,7 +63,11 @@ const HeaderSection = () => {
           </Heading>
           <Box h={4} />
           <LightMode>
-            <Button colorScheme={'yellow'} size='lg'>
+            <Button
+              colorScheme={'yellow'}
+              size='lg'
+              onClick={() => router.push('/contact')}
+            >
               Reach us
             </Button>
           </LightMode>
@@ -95,14 +104,17 @@ const PcSection = () => {
         color='white'
         transform={'translateY(-96px)'}
       >
-        <Grid templateColumns={'repeat(4, 1fr)'} gap={8}>
+        <Grid
+          templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(4, 1fr)' }}
+          gap={{ base: 4, md: 8 }}
+        >
           {primary.map((startup) => {
             const bannerIndex = startup.games.findIndex(
               (game) => game.banner !== undefined
             );
 
             return (
-              <GridItem key={startup.name} colSpan={2}>
+              <GridItem key={startup.name} colSpan={{ base: 1, md: 2 }}>
                 <CardItem startup={startup} bannerIndex={bannerIndex} />
               </GridItem>
             );
@@ -113,32 +125,32 @@ const PcSection = () => {
             );
 
             return (
-              <GridItem key={startup.name} colSpan={2}>
+              <GridItem key={startup.name} colSpan={{ base: 1, md: 2 }}>
                 <CardItem startup={startup} bannerIndex={bannerIndex} />
               </GridItem>
             );
           })}
-          {others.map((startup) => (
-            <GridItem key={startup.name}>
-              <Stack
-                direction={'row'}
-                gap={4}
-                p={4}
-                flex={1}
-                rounded={'2xl'}
-                overflow={'hidden'}
-                bg='black'
-                boxShadow={'base'}
-                _hover={{ boxShadow: 'dark-lg' }}
-                transition={'all 150ms ease-out'}
-                align='center'
-              >
-                <Avatar size='md' name={startup.name} />
-                <Heading size='md'>{startup.name}</Heading>
-              </Stack>
-            </GridItem>
-          ))}
         </Grid>
+        <Heading
+          pt={8}
+          pb={4}
+          size={{ base: 'md', md: 'lg' }}
+          textAlign={'center'}
+        >
+          Other startups
+        </Heading>
+        <Wrap justify='center'>
+          {others.map((startup) => (
+            <WrapItem key={startup.name}>
+              <Stack direction={'row'} gap={4} align='center'>
+                <Avatar size={{ base: 'sm', md: 'md' }} name={startup.name} />
+                <Heading size={{ base: 'sm', md: 'md' }}>
+                  {startup.name}
+                </Heading>
+              </Stack>
+            </WrapItem>
+          ))}
+        </Wrap>
       </Container>
     </Box>
   );
@@ -157,14 +169,15 @@ const CardItem = ({ startup, bannerIndex }) => {
     >
       <Stack gap={4} p={4} flex={1}>
         <Avatar size='lg' name={startup.name} />
-        <Heading size='md'>{startup.name}</Heading>
+        <Heading size='lg'>{startup.name}</Heading>
       </Stack>
 
       <Box pos='relative'>
         <Image
           src={startup.games[bannerIndex].banner}
           alt={startup.name}
-          h={56}
+          h={{ base: 'full', md: 56 }}
+          maxH={{ base: 56, md: 56 }}
           objectFit={'cover'}
         />
         <Box
