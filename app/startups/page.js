@@ -184,13 +184,7 @@ const CardItem = ({ startup, bannerIndex }) => {
               href={`${startup.games[bannerIndex].steamUrl}?utm_source=indigo+game&utm_medium=website`}
               target='_blank'
             >
-              <Button
-                variant='solid'
-                colorScheme='red'
-                leftIcon={<Icon as={FaSteam} boxSize={6} />}
-              >
-                Steam
-              </Button>
+              <Icon as={FaSteam} boxSize={6} />
             </Link>
           )}
           {startup.games[bannerIndex].playUrl && (
