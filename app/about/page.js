@@ -59,7 +59,7 @@ const HeaderSection = () => {
 
 const History = () => {
   const content = {
-    title: 'A bit of Indigo Game History',
+    title: 'Indigo Game: Long Story Short',
     timeline: [
       {
         year: 2019,
@@ -121,10 +121,11 @@ const History = () => {
 
   return (
     <Box>
-      <Container maxW={'container.xl'}>
+      <Container maxW={'container.xl'} py={{ base: 12, md: 24 }}>
         <Heading color='yellow.500' py={12} size='xl' textAlign={'center'}>
           {content.title}
         </Heading>
+        <Box h={{ base: 8, md: 12 }} />
         <Stack>
           {content.timeline.map((time) => (
             <SimpleGrid
