@@ -72,7 +72,8 @@ export default function Contact() {
                 color='red.500'
                 fontWeight={'bold'}
                 as={NextLink}
-                href='/submit'
+                href='https://bit.ly/teams_registration_indigo'
+                isExternal
               >
                 this page
               </Link>{' '}

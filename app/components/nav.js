@@ -37,7 +37,7 @@ const NavigationBar = () => {
 
   const links = [
     { id: 1, href: '/about', label: 'About' },
-    { id: 2, href: '/startups', label: 'Our startups' },
+    { id: 2, href: '/startups', label: 'Startups' },
     { id: 3, href: '/contact', label: 'Contact' },
   ];
 
@@ -50,7 +50,6 @@ const NavigationBar = () => {
       <Box
         color='white'
         bgGradient={'linear(to-br, red.500, red.600 , red.600 ,  red.800)'}
-        px={[4, 8]}
       >
         <Container maxW={'container.xl'}>
           <Stack

@@ -3,7 +3,7 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   fonts: {
     heading: `'Pixelify Sans', sans-serif`,
-    body: `'Ligo', sans-serif`,
+    body: `'Raleway', sans-serif`,
   },
   initialColorMode: 'dark',
   useSystemColorMode: false,

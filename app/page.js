@@ -23,6 +23,7 @@ import {
 import Logo from './components/logo';
 import Decoration from './components/decorations';
 import { useRouter } from 'next/navigation';
+import TitleArea from './components/title-area';
 
 export default function Home() {
   return (
@@ -247,7 +248,7 @@ const EngagementSection = () => {
         id: 1,
         name: 'Nuon Digital Indonesia',
         logo: () => (
-          <Logo.Nuon width={{ base: 32, md: 48 }} h='auto' fill='white' />
+          <Logo.Nuon width={{ base: 24, md: 32 }} h='auto' fill='white' />
         ),
       },
       {
@@ -256,7 +257,7 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-btp-white.png'}
-            width={{ base: 40, md: 56 }}
+            width={{ base: 32, md: 40 }}
             h='auto'
             objectFit={'contain'}
             alt={'Bandung Techno Park'}
@@ -269,7 +270,7 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-tic.webp'}
-            width={{ base: 40, md: 56 }}
+            width={{ base: 32, md: 40 }}
             h='auto'
             objectFit={'contain'}
             alt={'The Iterative Collective'}
@@ -282,7 +283,7 @@ const EngagementSection = () => {
         logo: () => (
           <Image
             src={'/logo/logo-gamelan-game-jogja.png'}
-            width={{ base: 40, md: 56 }}
+            width={{ base: 32, md: 40 }}
             h='auto'
             objectFit={'contain'}
             alt={'GameLan Jogja'}
@@ -297,10 +298,25 @@ const EngagementSection = () => {
             src={
               'https://academy.agate.id/wp-content/uploads/2023/05/logo-agate-academy-white-1.png'
             }
-            width={{ base: 40, md: 56 }}
+            width={{ base: 32, md: 40 }}
             h='auto'
             objectFit={'contain'}
             alt={'Agate Academy'}
+          />
+        ),
+      },
+      {
+        id: 6,
+        name: 'IA-CEPA Katalis',
+        logo: () => (
+          <Image
+            src={
+              'https://iacepa-katalis.org/wp-content/uploads/2022/02/logo_white-72.png'
+            }
+            width={{ base: 32, md: 40 }}
+            h='auto'
+            objectFit={'contain'}
+            alt='IA-CEPA Katalis'
           />
         ),
       },
@@ -326,7 +342,7 @@ const EngagementSection = () => {
           />
         </Box>
         <Box h={8} />
-        <Wrap justify={'center'} align='center' gap={40}>
+        <Wrap justify={'center'} align='center' spacingX={{ base: 8, md: 18 }}>
           {content.partners.map((partner) => {
             const logo = partner.logo();
             return <WrapItem key={partner.id}>{logo}</WrapItem>;
@@ -506,20 +522,6 @@ const JoinSection = () => {
   );
 };
 
-const TitleArea = ({ title, subtitle, caption }) => {
-  return (
-    <>
-      <Heading size='md'>{subtitle}</Heading>
-      <Box h={2} />
-      <Heading color='yellow.500' size='2xl'>
-        {title}
-      </Heading>
-      <Box h={4} />
-      <Text fontSize={'md'}>{caption}</Text>
-    </>
-  );
-};
-
 const VideoBackground = ({ src, wrapperProps, children }) => {
   return (
     <Box pos={'relative'} {...wrapperProps}>
@@ -532,7 +534,7 @@ const VideoBackground = ({ src, wrapperProps, children }) => {
           src={src}
           type={'video/mp4'}
           style={{
-            'object-fit': 'cover',
+            objectFit: 'cover',
             height: '100%',
             width: '100%',
           }}
