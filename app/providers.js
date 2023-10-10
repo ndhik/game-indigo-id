@@ -1,5 +1,9 @@
 'use client';
 
+// Supports weights 400-700
+import '@fontsource-variable/pixelify-sans';
+// Supports weights 100-900
+import '@fontsource-variable/raleway';
 import { CacheProvider } from '@chakra-ui/next-js';
 import { ChakraProvider, DarkMode } from '@chakra-ui/react';
 import { Analytics } from '@vercel/analytics/react';
@@ -11,7 +15,6 @@ export function Providers({ children }) {
     <CacheProvider>
       <ChakraProvider theme={theme}>
         <DarkMode>
-          <Fonts />
           <Analytics />
           {children}
         </DarkMode>
