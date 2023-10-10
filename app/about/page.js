@@ -157,8 +157,11 @@ const History = () => {
               <Stack gap={8}>
                 {time.events.map((event) => (
                   <Box color='white' key={event.title}>
-                    <Heading>{event.title}</Heading>
-                    <Text>{event.description}</Text>
+                    <Heading maxW={'sm'}>{event.title}</Heading>
+                    <Box h={4} />
+                    <Text fontSize={'sm'} maxW={'sm'}>
+                      {event.description}
+                    </Text>
                   </Box>
                 ))}
               </Stack>
