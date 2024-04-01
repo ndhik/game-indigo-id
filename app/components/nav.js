@@ -14,6 +14,7 @@ import {
   Image,
   Link,
   Stack,
+  Tooltip,
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -76,14 +77,24 @@ const NavigationBar = () => {
                     {link.label}
                   </Link>
                 ))}
-                <Button
-                  colorScheme='yellow'
-                  boxShadow={'lg'}
-                  size='sm'
-                  onClick={onCtaClick}
+                <Tooltip
+                  hasArrow
+                  label={'Indigo Game intake is always open 24/7'}
+                  bg={'orange.300'}
+                  color='black'
+                  fontWeight={'bold'}
+                  isOpen
+                  placement={'bottom'}
                 >
-                  Submit your game
-                </Button>
+                  <Button
+                    colorScheme='yellow'
+                    boxShadow={'lg'}
+                    size='sm'
+                    onClick={onCtaClick}
+                  >
+                    Submit your game
+                  </Button>
+                </Tooltip>
               </Stack>
             ) : (
               <IconButton
