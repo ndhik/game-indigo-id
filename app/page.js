@@ -518,12 +518,16 @@ const JoinSection = () => {
           <LightMode>
             <Tooltip
               hasArrow
-              label={'Indigo Game intake is always open 24/7'}
-              bg={'orange.300'}
-              color='black'
+              label={'Indigo Game intake is open'}
+              bg={'gray.100'}
+              fontSize={'md'}
+              color={'red.400'}
               fontWeight={'bold'}
               isOpen
               placement={'top'}
+              borderRadius={'md'}
+              px={5}
+              py={1}
             >
               <Button
                 colorScheme='red'
