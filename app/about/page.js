@@ -17,6 +17,7 @@ import {
   Stepper,
   Tag,
   Text,
+  Tooltip,
   Wrap,
   WrapItem,
   useToken,
@@ -277,14 +278,24 @@ const JoinSection = () => {
         </Box>
         <Box h={16} />
         <LightMode>
-          <Button
-            colorScheme='red'
-            size={'lg'}
-            textTransform={'uppercase'}
-            onClick={onCtaClick}
+          <Tooltip
+            hasArrow
+            label={'Indigo Game intake is always open 24/7'}
+            bg={'orange.300'}
+            color='black'
+            fontWeight={'bold'}
+            isOpen
+            placement={'top'}
           >
-            Submit your game
-          </Button>
+            <Button
+              colorScheme='red'
+              size={'lg'}
+              textTransform={'uppercase'}
+              onClick={onCtaClick}
+            >
+              Submit your game
+            </Button>
+          </Tooltip>
         </LightMode>
       </Container>
     </Box>

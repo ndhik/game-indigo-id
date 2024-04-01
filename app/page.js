@@ -11,11 +11,13 @@ import {
   Grid,
   GridItem,
   Heading,
+  Highlight,
   Image,
   LightMode,
   SimpleGrid,
   Stack,
   Text,
+  Tooltip,
   Wrap,
   WrapItem,
   useToken,
@@ -45,9 +47,9 @@ export default function Home() {
 const HeroSection = () => {
   const router = useRouter();
   const content = {
-    title: 'Making Indonesia a Game Producer Nation',
+    title: 'Indigo Game intake is open!',
     subtitle:
-      'Indigo Game is an incubator to level up early-stage game studio to be ready for publishing deal. Join us and bring your game into reality.',
+      'You can submit your game anytime around the year to be incubated in Indigo Game Incubation Program. Just hit button below and fill the form, attach your deck and game build, and wait for our call!',
   };
 
   const onCtaClick = () => {
@@ -85,18 +87,23 @@ const HeroSection = () => {
         >
           <Heading
             fontSize={{ base: '6xl', md: '8xl' }}
-            lineHeight={0.9}
+            lineHeight={1.1}
             textAlign={{ base: 'center', md: 'start' }}
           >
-            {content.title}
+            <Highlight
+              query={'intake is open!'}
+              styles={{ rounded: 'md', p: 0, bg: 'orange.300' }}
+            >
+              {content.title}
+            </Highlight>
           </Heading>
-          <Text fontSize={'xl'} textAlign={{ base: 'center', md: 'start' }}>
+          <Text fontSize={'lg'} textAlign={{ base: 'center', md: 'start' }}>
             {content.subtitle}
           </Text>
           <LightMode>
             <Button
-              colorScheme={'red'}
-              size='lg'
+              colorScheme='red'
+              size={'lg'}
               textTransform={'uppercase'}
               onClick={onCtaClick}
             >
@@ -240,7 +247,7 @@ const ProgramSection = () => {
 const EngagementSection = () => {
   const content = {
     subtitle: 'We are',
-    title: 'Connecting the dots of the game development industry',
+    title: 'Making Indonesia a Game Producer Nation',
     caption:
       "We're the link that connects the dots in the game development industry, uniting talent, innovation, and opportunities to shape the future of gaming.",
     partners: [
@@ -481,8 +488,10 @@ const JoinSection = () => {
   const content = {
     subtitle: 'Is your game studio',
     title: 'Eager to get publisher?',
-    caption:
+    caption: [
       'We are looking for high spirited game studio with playable vertical slice and validated business plan to be nurtured into publisher-stage. Submit your game now.',
+      'Indigo Game intake is always open 24/7.',
+    ],
   };
 
   const onCtaClick = () => {
@@ -503,20 +512,32 @@ const JoinSection = () => {
           <TitleArea
             title={content.title}
             subtitle={content.subtitle}
-            caption={content.caption}
+            caption={content.caption[0]}
           />
         </Box>
-        <Box h={16} />
-        <LightMode>
-          <Button
-            colorScheme='red'
-            size={'lg'}
-            textTransform={'uppercase'}
-            onClick={onCtaClick}
-          >
-            Submit your game
-          </Button>
-        </LightMode>
+        <Box h={12} />
+        <Stack direction={'row'}>
+          <LightMode>
+            <Tooltip
+              hasArrow
+              label={'Indigo Game intake is always open 24/7'}
+              bg={'orange.300'}
+              color='black'
+              fontWeight={'bold'}
+              isOpen
+              placement={'top'}
+            >
+              <Button
+                colorScheme='red'
+                size={'lg'}
+                textTransform={'uppercase'}
+                onClick={onCtaClick}
+              >
+                Submit your game
+              </Button>
+            </Tooltip>
+          </LightMode>
+        </Stack>
       </Container>
     </Box>
   );
