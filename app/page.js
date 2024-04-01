@@ -87,12 +87,12 @@ const HeroSection = () => {
         >
           <Heading
             fontSize={{ base: '6xl', md: '8xl' }}
-            lineHeight={1.1}
+            lineHeight={1.2}
             textAlign={{ base: 'center', md: 'start' }}
           >
             <Highlight
-              query={'intake is open!'}
-              styles={{ rounded: 'md', p: 0, bg: 'orange.300' }}
+              query={['intake', 'is', 'open']}
+              styles={{ rounded: 'md', p: 0, bg: 'yellow.300' }}
             >
               {content.title}
             </Highlight>
@@ -314,16 +314,14 @@ const EngagementSection = () => {
       },
       {
         id: 6,
-        name: 'IA-CEPA Katalis',
+        name: 'Kementerian Perdagangan',
         logo: () => (
           <Image
-            src={
-              'https://iacepa-katalis.org/wp-content/uploads/2022/02/logo_white-72.png'
-            }
+            src={'/logo/logo-kemendag-white.png'}
             width={{ base: 32, md: 40 }}
             h='auto'
             objectFit={'contain'}
-            alt='IA-CEPA Katalis'
+            alt='Kementerian Perdagangan Republik Indonesia'
           />
         ),
       },
